@@ -8,6 +8,7 @@
   - [Learning the protein language: Evolution, structure, and function](#learning-the-protein-language-evolution-structure-and-function)
   - [Mixture of Experts for Predicting Antibody-Antigen Binding Affinity from Antigen Sequence](#mixture-of-experts-for-predicting-antibody-antigen-binding-affinity-from-antigen-sequence)
   - [DeepAffinity: Interpretable Deep Learning of Compound-Protein Affinity through Unified Recurrent and Convolutional Neural Networks](#deepaffinity-interpretable-deep-learning-of-compound-protein-affinity-through-unified-recurrent-and-convolutional-neural-networks)
+  - [ChemBoost: A Chemical Language Based Approach for Protein – Ligand Binding Affinity Prediction](#chemboost-a-chemical-language-based-approach-for-protein--ligand-binding-affinity-prediction)
 
 
 ## SEQUENCE-BASED DEEP LEARNING ANTIBODY DESIGN FOR INSILICO ANTIBODY AFFINITY MATURATION
@@ -80,3 +81,18 @@
 ![](figure/2021-09-27%20183023.png)
 
 可以考虑使用其中的 structural property sequence 一起表示序列。首先用 seq2seq 这个 RNN 模型来无监督预训练所有序列（蛋白和小分子），其次是在其中encoder和decoder中间添加注意力机制。
+
+## ChemBoost: A Chemical Language Based Approach for Protein – Ligand Binding Affinity Prediction
+[原文](pdf/minf.202000212.pdf)
+
+|||
+|:---:|---|
+|预测内容|蛋白-小分子亲和力（甚至可以预测没见过的序列）|
+|数据集|KIBA bioactivity、binding DB|
+|方法|小分子用语义模型，以此向量为中心表示蛋白|
+
+文章中提到了两种蛋白的表示方法：Smith-Waterman、ProtVec，后续再看看。
+
+用蛋白的所有ligend+其亲和力或者仅强的ligend的向量表示来向量化蛋白质本身。然后当回归问题做。
+
+又提到一个网络DeepDTA。
