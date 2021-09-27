@@ -4,9 +4,10 @@
 # Author     : QiuKe <qk21@mails.tsinghua.edu.cn>
 # Description: An interface for structural and sequencial information of proteins.
 
+import abc
 from typing import Any, Dict, List, Optional, Union
 
-class AbstractData:
+class AbstractData(metaclass=abc.ABCMeta):
     def __init__(self, attributes: Dict[str, Any]):
         self._element_attr_length: Optional[int] = 0
         self._element_attr: Dict[str, List[Any]] = {}
