@@ -7,6 +7,7 @@
   - [Deep learning enables therapeutic antibody optimization in mammalian cells by deciphering high-dimensional protein sequence space](#deep-learning-enables-therapeutic-antibody-optimization-in-mammalian-cells-by-deciphering-high-dimensional-protein-sequence-space)
   - [Learning the protein language: Evolution, structure, and function](#learning-the-protein-language-evolution-structure-and-function)
   - [Mixture of Experts for Predicting Antibody-Antigen Binding Affinity from Antigen Sequence](#mixture-of-experts-for-predicting-antibody-antigen-binding-affinity-from-antigen-sequence)
+  - [DeepAffinity: Interpretable Deep Learning of Compound-Protein Affinity through Unified Recurrent and Convolutional Neural Networks](#deepaffinity-interpretable-deep-learning-of-compound-protein-affinity-through-unified-recurrent-and-convolutional-neural-networks)
 
 
 ## SEQUENCE-BASED DEEP LEARNING ANTIBODY DESIGN FOR INSILICO ANTIBODY AFFINITY MATURATION
@@ -59,7 +60,23 @@
 |||
 |:---:|---|
 |预测内容|多种抗体对新抗原的识别|
-|数据集|[SCOP](https://scop.mrc-lmb.cam.ac.uk/)|
+|数据集|HIV抗体|
 |方法|多专家系统、抗原序列|
 
 对本课题意义不大，本文主要用于预测特定抗体对稍有变化的抗原的亲和力，每个抗体均训练一个专家模型，每个专家模型使L1正则化线性回归，完全只基于多种抗原对单个抗体的结合能信息和抗原本身的序列。
+
+---
+## DeepAffinity: Interpretable Deep Learning of Compound-Protein Affinity through Unified Recurrent and Convolutional Neural Networks
+[原文](pdf/btz111.pdf)
+
+[代码](https://github.com/Shen-Lab/DeepAffinity)
+
+|||
+|:---:|---|
+|预测内容|抗体-小分子亲和力|
+|数据集|BindingDB|
+|方法|基于子序列属性、小分子的SMILES做RNN-CNN|
+
+![](figure/2021-09-27%20183023.png)
+
+可以考虑使用其中的 structural property sequence 一起表示序列。首先用 seq2seq 这个 RNN 模型来无监督预训练所有序列（蛋白和小分子），其次是在其中encoder和decoder中间添加注意力机制。
