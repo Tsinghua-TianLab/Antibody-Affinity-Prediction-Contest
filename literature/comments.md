@@ -6,6 +6,7 @@
   - [SEQUENCE-BASED DEEP LEARNING ANTIBODY DESIGN FOR INSILICO ANTIBODY AFFINITY MATURATION](#sequence-based-deep-learning-antibody-design-for-insilico-antibody-affinity-maturation)
   - [Deep learning enables therapeutic antibody optimization in mammalian cells by deciphering high-dimensional protein sequence space](#deep-learning-enables-therapeutic-antibody-optimization-in-mammalian-cells-by-deciphering-high-dimensional-protein-sequence-space)
   - [Learning the protein language: Evolution, structure, and function](#learning-the-protein-language-evolution-structure-and-function)
+  - [Mixture of Experts for Predicting Antibody-Antigen Binding Affinity from Antigen Sequence](#mixture-of-experts-for-predicting-antibody-antigen-binding-affinity-from-antigen-sequence)
 
 
 ## SEQUENCE-BASED DEEP LEARNING ANTIBODY DESIGN FOR INSILICO ANTIBODY AFFINITY MATURATION
@@ -51,4 +52,14 @@
 
 分为三层，首层为 `biLSTM` 作为 encoder，通过 mask-predict 任务来预训练。一些其他的文献中也使用 `doc2vec` 模型来直接做 encoder。后续使用此嵌入来进行包括预测结构和预测两条不同链之间相似性的工作。可能可以替换下游任务。
 
+---
+## Mixture of Experts for Predicting Antibody-Antigen Binding Affinity from Antigen Sequence
+[原文](pdf/511360v1.full.pdf)
 
+|||
+|:---:|---|
+|预测内容|多种抗体对新抗原的识别|
+|数据集|[SCOP](https://scop.mrc-lmb.cam.ac.uk/)|
+|方法|多专家系统、抗原序列|
+
+对本课题意义不大，本文主要用于预测特定抗体对稍有变化的抗原的亲和力，每个抗体均训练一个专家模型，每个专家模型使L1正则化线性回归，完全只基于多种抗原对单个抗体的结合能信息和抗原本身的序列。
