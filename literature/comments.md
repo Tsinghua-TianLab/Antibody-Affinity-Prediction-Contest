@@ -5,6 +5,7 @@
   - [目录](#目录)
   - [SEQUENCE-BASED DEEP LEARNING ANTIBODY DESIGN FOR INSILICO ANTIBODY AFFINITY MATURATION](#sequence-based-deep-learning-antibody-design-for-insilico-antibody-affinity-maturation)
   - [Deep learning enables therapeutic antibody optimization in mammalian cells by deciphering high-dimensional protein sequence space](#deep-learning-enables-therapeutic-antibody-optimization-in-mammalian-cells-by-deciphering-high-dimensional-protein-sequence-space)
+  - [Learning the protein language: Evolution, structure, and function](#learning-the-protein-language-evolution-structure-and-function)
 
 
 ## SEQUENCE-BASED DEEP LEARNING ANTIBODY DESIGN FOR INSILICO ANTIBODY AFFINITY MATURATION
@@ -31,3 +32,23 @@
 
 ![](figure/2021-09-27%20163346.png)
 利用 CRISPR-Cas9 homology-durected mutagenesis，结合 deep mutational scanning 获取到的 CDR 区域关键氨基酸，来产生一个点突变库。使用的网络相当初级，且是定长的，我认为此文献没有太大价值。
+
+---
+## Learning the protein language: Evolution, structure, and function
+[原文](pdf/learning_protein_sequence_embe.pdf)
+
+[代码](https://github.com/tbepler/prose)
+
+[前置文章：LEARNING PROTEIN SEQUENCE EMBEDDINGS USING INFORMATION FROM STRUCTURE](pdf/learning_protein_sequence_embe.pdf)
+
+|||
+|:---:|---|
+|预测内容|序列的embedding|
+|数据集|[SCOP](https://scop.mrc-lmb.cam.ac.uk/)|
+|方法|基于语义模型，用结构信息监督学习|
+
+![](figure/2021-09-27%20174608.png)
+
+分为三层，首层为 `biLSTM` 作为 encoder，通过 mask-predict 任务来预训练。一些其他的文献中也使用 `doc2vec` 模型来直接做 encoder。后续使用此嵌入来进行包括预测结构和预测两条不同链之间相似性的工作。可能可以替换下游任务。
+
+
