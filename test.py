@@ -1,21 +1,22 @@
-from addinity_prediction.data.data_interface import PackedAttribute
 import unittest
 
-from addinity_prediction.data import Chain
+from affinity_prediction.data import get_dataset
 
 class Test(unittest.TestCase):
-    def test_chain_data_structure(self):
-        chain = Chain(
-            'ABDP',
-            chain_id = PackedAttribute('Chain_id'),
-            charge = [0, 0, -1, 1],
-            linkage = [[1, 2], [0], [0], []]
-        )
-        print(chain.chain_id)
-        print(chain.sequence)
-        print(chain[1])
-        print(chain['linkage'])
-        print(len(chain))
+    def test_dataset(self):
+        example_dataset = get_dataset('example', './example_dataset')
+        print(example_dataset.get_dataset_data_structure())
+        for index, data in enumerate(example_dataset):
+            print(f'-----{index}-----')
+            print(f'affinity: {data.affinity}')
+            print('chain_a:')
+            print(data.chain_a.sequence)
+            for item in data.chain_a:
+                print(item)
+            print('chain_b:')
+            print(data.chain_b.sequence)
+            for item in data.chain_b:
+                print(item)
 
 
 if __name__ == '__main__':
